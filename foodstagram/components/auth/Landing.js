@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Button } from "react-native";
+import { Text, View, Button, StyleSheet } from "react-native";
 
 export default function Landing({ navigation }) {
   return (
@@ -8,6 +8,20 @@ export default function Landing({ navigation }) {
         title="Register"
         onPress={() => navigation.navigate("Register")}
       ></Button>
+      <Text style={styles.baseText}>
+        “you only miss 100% of the shots you dont take”
+      </Text>
+      <Text>test</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  baseText: {
+    fontFamily: "Montserrat-Regular",
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+});
