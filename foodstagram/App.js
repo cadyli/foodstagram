@@ -2,7 +2,6 @@ import "react-native-gesture-handler";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import LandingScreen from "./components/auth/Landing";
 import ThemeManager, { useTheme } from './assets/themes';
 import { Switch } from 'react-native';
 import HomeScreen from "./components/HomeScreen";

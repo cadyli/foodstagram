@@ -8,21 +8,22 @@ import {
   Pressable,
   TextInput,
 } from "react-native";
+import ThemeManager, { useTheme } from '../assets/themes';
+import { Switch } from 'react-native';
+import styled from 'styled-components/native';
 
 const icon = require("../assets/images/icon.png");
 
 export default function Login({ navigation }) {
+  const theme = useTheme()
   const [username, handleUsername] = useState("");
   const [password, handlePassword] = useState("");
   return (
-    <View
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: "20%",
-      }}
-    >
+    <Container>
+    <Switch 
+          value={theme.mode === 'dark'}
+          onValueChange={value => theme.setMode(value ? 'dark' : 'light')}
+        />
       <Image source={icon} style={styles.iconImage} />
       <Text style={styles.titleText}>FOODSTAGRAM</Text>
       <TextInput
@@ -46,9 +47,19 @@ export default function Login({ navigation }) {
       <Text style={styles.baseText}>
         “you only miss 100% of the shots you dont take”
       </Text>
-    </View>
+    </Container>
   );
 }
+
+const Container = styled.View`
+  flex: 1;
+  /* add this */
+  background: ${props => props.theme.backgroundAlt};
+  align-items: center;
+  justify-content: center;
+  display: "flex";
+  marginTop: "20%";
+`
 
 const styles = StyleSheet.create({
   titleText: {
