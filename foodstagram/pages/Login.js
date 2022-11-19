@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, Button, StyleSheet } from "react-native";
 
-export default function Landing({ navigation }) {
+export default function Login({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: "center" }}>
       <Button
