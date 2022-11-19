@@ -11,7 +11,7 @@ export default function Landing({ navigation }) {
       <Text style={styles.baseText}>
         “you only miss 100% of the shots you dont take”
       </Text>
-      <Text>test</Text>
+      <Text style={styles.titleText}>FOODSTAGRAM</Text>
     </View>
   );
 }
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat-Regular",
   },
   titleText: {
+    fontFamily: "NewSun_YandiDesigns",
     fontSize: 20,
     fontWeight: "bold",
   },
