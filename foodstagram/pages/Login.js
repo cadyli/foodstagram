@@ -26,7 +26,7 @@ export default function Login({ navigation }) {
         onValueChange={(value) => theme.setMode(value ? "dark" : "light")}
       />
       <Image source={icon} style={styles.iconImage} />
-      <Text style={styles.titleText}>FOODSTAGRAM</Text>
+      <Title>FOODSTAGRAM</Title>
       <View>
         <TextInput
           style={styles.input}
@@ -41,29 +41,28 @@ export default function Login({ navigation }) {
           placeholder="password"
         />
         <TouchableOpacity onPress={handleLogin}>
-          <Text style={styles.forgotPasswordText}>Forgotten password?</Text>
+          <ForgotText>Forgotten password?</ForgotText>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={handleLogin}
           style={styles.loginButton}
           color="#EFD796"
         >
-          <Text>login</Text>
+          <Text style={styles.button}>login</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.bottomText}>
+      <BottomText>
         <Text>Don't have an account? </Text>
         <Pressable onPress={() => navigation.navigate("Register")}>
           <Text style={styles.button}>Register</Text>
         </Pressable>
-      </View>
+      </BottomText>
     </Container>
   );
 }
 
 const Container = styled.View`
   flex: 1;
-  /* add this */
   background: ${(props) => props.theme.backgroundAlt};
   align-items: center;
   justify-content: center;
@@ -71,20 +70,37 @@ const Container = styled.View`
   margintop: "20%";
 `;
 
+const BaseText = styled.Text`
+  font-family: Montserrat-Regular;
+  color: ${(props) => props.theme.text};
+`;
+
+const Title = styled(BaseText)`
+  display: flex;
+  font-family: NewSun_YandiDesigns;
+  font-size: 48;
+  justify-content: center;
+`;
+
+const ForgotText = styled(BaseText)`
+  display: flex;
+  justify-content: flex-end;
+  font-size: 10;
+  margin-top: -5;
+  margin-bottom: 5;
+`;
+
+const BottomText = styled(BaseText)`
+  position: absolute;
+  bottom: 20;
+`;
+
 const styles = StyleSheet.create({
-  titleText: {
-    display: "flex",
-    fontFamily: "NewSun_YandiDesigns",
-    fontSize: 48,
-    fontWeight: "bold",
-    justifyContent: "center",
-  },
   button: {
     fontFamily: "Montserrat-Bold",
   },
   loginButton: {
     height: 40,
-    // margin: 12,
     marginVertical: 12,
     borderWidth: 3,
     borderColor: "#EFD796",
@@ -93,17 +109,6 @@ const styles = StyleSheet.create({
     borderRadius: "10px",
     fontFamily: "Montserrat-Bold",
     alignItems: "center",
-  },
-  baseText: {
-    fontFamily: "Montserrat-Regular",
-  },
-  forgotPasswordText: {
-    fontFamily: "Montserrat-Regular",
-    display: "flex",
-    justifyContent: "flex-end",
-    fontSize: "10px",
-    marginTop: "-5px",
-    marginBottom: "5px",
   },
   iconImage: {
     width: "150px",
@@ -114,15 +119,8 @@ const styles = StyleSheet.create({
     // flex: 1,
     // alignItems: "center",
   },
-  bottomText: {
-    position: "absolute",
-    bottom: "20px",
-    display: "flex",
-    flexDirection: "row",
-  },
   input: {
     height: 40,
-    // margin: 12,
     marginVertical: 12,
     borderWidth: 3,
     borderColor: "white",
