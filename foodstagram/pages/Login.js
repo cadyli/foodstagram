@@ -28,14 +28,12 @@ export default function Login({ navigation }) {
       <Image source={icon} style={styles.iconImage} />
       <Title>FOODSTAGRAM</Title>
       <View>
-        <TextInput
-          style={styles.input}
+        <Input
           onChangeText={handleUsername}
           value={username}
           placeholder="username"
         />
-        <TextInput
-          style={styles.input}
+        <Input
           onChangeText={handlePassword}
           value={password}
           placeholder="password"
@@ -43,13 +41,9 @@ export default function Login({ navigation }) {
         <TouchableOpacity onPress={handleLogin}>
           <ForgotText>Forgotten password?</ForgotText>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={handleLogin}
-          style={styles.loginButton}
-          color="#EFD796"
-        >
-          <Text style={styles.button}>login</Text>
-        </TouchableOpacity>
+        <Button onPress={handleLogin}>
+          <ButtonText>login</ButtonText>
+        </Button>
       </View>
       <BottomText>
         <Text>Don't have an account? </Text>
@@ -95,21 +89,35 @@ const BottomText = styled(BaseText)`
   bottom: 20;
 `;
 
+const ButtonText = styled.Text`
+  font-family: Montserrat-Bold;
+  color: ${(props) => props.theme.textAlt};
+`;
+
+const Button = styled.TouchableOpacity`
+  height: 40;
+  margin-vertical: 12;
+  border-width: 3;
+  border-color: ${(props) => props.theme.border};
+  background-color: ${(props) => props.theme.border};
+  border-radius: 10;
+  font-family: Montserrat-Bold;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Input = styled.TextInput`
+  height: 40;
+  margin-vertical: 12;
+  border-width: 3;
+  border-color: white;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10;
+  font-family: Montserrat-Regular;
+`;
+
 const styles = StyleSheet.create({
-  button: {
-    fontFamily: "Montserrat-Bold",
-  },
-  loginButton: {
-    height: 40,
-    marginVertical: 12,
-    borderWidth: 3,
-    borderColor: "#EFD796",
-    padding: 10,
-    backgroundColor: "#EFD796",
-    borderRadius: "10px",
-    fontFamily: "Montserrat-Bold",
-    alignItems: "center",
-  },
   iconImage: {
     width: "150px",
     height: "150px",
@@ -118,15 +126,5 @@ const styles = StyleSheet.create({
     // resizeMode: "cover",
     // flex: 1,
     // alignItems: "center",
-  },
-  input: {
-    height: 40,
-    marginVertical: 12,
-    borderWidth: 3,
-    borderColor: "white",
-    padding: 10,
-    backgroundColor: "white",
-    borderRadius: "10px",
-    fontFamily: "Montserrat-Regular",
   },
 });
