@@ -5,7 +5,6 @@ import {
   Image,
   Text,
   View,
-  Button,
   StyleSheet,
   Pressable,
   TextInput,
@@ -20,19 +19,21 @@ const Register = () => {
   const [username, handleUsername] = useState("");
   const [setPassword, handleSetPassword] = useState("");
   const [confirmPassword, handleConfirmPassword] = useState("");
+  const [register, handleRegister] = useState("");
   return (
     <Container>
+    <Title>FOODSTAGRAM</Title>
       <TextInput
         style={styles.input}
         onChangeText={handleFirstname}
         value={firstname}
-        placeholder="First Name"
+        placeholder="first name"
       />
       <TextInput
         style={styles.input}
         onChangeText={handleLastname}
         value={lastname}
-        placeholder="Last Name"
+        placeholder="last name"
       />
       <TextInput
         style={styles.input}
@@ -50,15 +51,26 @@ const Register = () => {
         style={styles.input}
         onChangeText={handleSetPassword}
         value={setPassword}
-        placeholder="Set Password"
+        placeholder="set password"
       />
       <TextInput
         style={styles.input}
         onChangeText={handleConfirmPassword}
         value={confirmPassword}
-        placeholder="Confirm Password"
+        placeholder="confirm password"
       />
+
+      <Button onPress={handleRegister}>
+          <ButtonText>register</ButtonText>
+        </Button>
+        <BottomText>
+      <Text>Already have an account?</Text>
+      <Pressable onPress={() => navigation.navigate("Login")}>
+          <Text style={styles.button}> Login</Text>
+        </Pressable>
+        </BottomText>
     </Container>
+    
   )
 }
 
@@ -70,31 +82,50 @@ const Container = styled.View`
   background: ${props => props.theme.backgroundAlt};
   align-items: center;
   justify-content: center;
+`;
+
+const Button = styled.TouchableOpacity`
+  height: 40;
+  width: 170;
+  margin-vertical: 12;
+  border-width: 10;
+  border-color: ${(props) => props.theme.border};
+  background-color: ${(props) => props.theme.border};
+  border-radius: 10;
+  font-family: Montserrat-Bold;
+  align-items: center;
+  justify-content: center;
+`;
+
+const BaseText = styled.Text`
+  font-family: Montserrat-Regular;
+  color: ${(props) => props.theme.text};
+`;
+
+const Title = styled(BaseText)`
+  display: flex;
+  font-family: NewSun_YandiDesigns;
+  font-size: 48;
+  justify-content: center;
+`
+const ButtonText = styled.Text`
+  font-family: Montserrat-Bold;
+  font-size: 16px;
+  color: ${(props) => props.theme.textAlt};
+`;
+
+const BottomText = styled(BaseText)`
+  fontSize: 12px;
+  justify-content: center;
 `
 
+
 const styles = StyleSheet.create({
-  titleText: {
-    display: "flex",
-    fontFamily: "NewSun_YandiDesigns",
-    fontSize: 48,
-    fontWeight: "bold",
-    justifyContent: "center",
-  },
-  button: {
-    fontFamily: "Montserrat-Bold",
-  },
-  baseText: {
-    fontFamily: "Montserrat-Regular",
-  },
   iconImage: {
     flex: 1,
     resizeMode: "cover",
     width: "100%",
     alignItems: "center",
-  },
-  bottomText: {
-    display: "flex",
-    flexDirection: "row",
   },
   input: {
     height: 40,
