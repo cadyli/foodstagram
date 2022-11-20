@@ -3,17 +3,14 @@ import {
   Image,
   Text,
   View,
-  Button,
   StyleSheet,
   Pressable,
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import ThemeManager, { useTheme } from "../assets/themes";
+import { useTheme } from "../assets/themes";
 import { Switch } from "react-native";
 import styled from "styled-components/native";
-import { initial } from "lodash";
-// import { TouchableOpacity } from "react-native-gesture-handler";
 
 const icon = require("../assets/images/icon.png");
 
@@ -43,6 +40,9 @@ export default function Login({ navigation }) {
           value={password}
           placeholder="password"
         />
+        <TouchableOpacity onPress={handleLogin}>
+          <Text style={styles.forgotPasswordText}>Forgotten password?</Text>
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={handleLogin}
           style={styles.loginButton}
@@ -84,7 +84,8 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     height: 40,
-    margin: 12,
+    // margin: 12,
+    marginVertical: 12,
     borderWidth: 3,
     borderColor: "#EFD796",
     padding: 10,
@@ -96,6 +97,14 @@ const styles = StyleSheet.create({
   baseText: {
     fontFamily: "Montserrat-Regular",
   },
+  forgotPasswordText: {
+    fontFamily: "Montserrat-Regular",
+    display: "flex",
+    justifyContent: "flex-end",
+    fontSize: "10px",
+    marginTop: "-5px",
+    marginBottom: "5px",
+  },
   iconImage: {
     width: "150px",
     height: "150px",
@@ -106,12 +115,15 @@ const styles = StyleSheet.create({
     // alignItems: "center",
   },
   bottomText: {
+    position: "absolute",
+    bottom: "20px",
     display: "flex",
     flexDirection: "row",
   },
   input: {
     height: 40,
-    margin: 12,
+    // margin: 12,
+    marginVertical: 12,
     borderWidth: 3,
     borderColor: "white",
     padding: 10,
