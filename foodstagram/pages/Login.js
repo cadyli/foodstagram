@@ -7,46 +7,56 @@ import {
   StyleSheet,
   Pressable,
   TextInput,
+  TouchableOpacity,
 } from "react-native";
-import ThemeManager, { useTheme } from '../assets/themes';
-import { Switch } from 'react-native';
-import styled from 'styled-components/native';
+import ThemeManager, { useTheme } from "../assets/themes";
+import { Switch } from "react-native";
+import styled from "styled-components/native";
+import { initial } from "lodash";
+// import { TouchableOpacity } from "react-native-gesture-handler";
 
 const icon = require("../assets/images/icon.png");
 
 export default function Login({ navigation }) {
-  const theme = useTheme()
+  const theme = useTheme();
   const [username, handleUsername] = useState("");
   const [password, handlePassword] = useState("");
+  const handleLogin = function () {};
   return (
     <Container>
-    <Switch 
-          value={theme.mode === 'dark'}
-          onValueChange={value => theme.setMode(value ? 'dark' : 'light')}
-        />
+      <Switch
+        value={theme.mode === "dark"}
+        onValueChange={(value) => theme.setMode(value ? "dark" : "light")}
+      />
       <Image source={icon} style={styles.iconImage} />
       <Text style={styles.titleText}>FOODSTAGRAM</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={handleUsername}
-        value={username}
-        placeholder="username"
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={handlePassword}
-        value={password}
-        placeholder="password"
-      />
-      <Pressable onPress={() => navigation.navigate("Register")}>
-        <View style={styles.bottomText}>
-          <Text>Don't have an account? </Text>
+      <View>
+        <TextInput
+          style={styles.input}
+          onChangeText={handleUsername}
+          value={username}
+          placeholder="username"
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={handlePassword}
+          value={password}
+          placeholder="password"
+        />
+        <TouchableOpacity
+          onPress={handleLogin}
+          style={styles.loginButton}
+          color="#EFD796"
+        >
+          <Text>login</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.bottomText}>
+        <Text>Don't have an account? </Text>
+        <Pressable onPress={() => navigation.navigate("Register")}>
           <Text style={styles.button}>Register</Text>
-        </View>
-      </Pressable>
-      <Text style={styles.baseText}>
-        “you only miss 100% of the shots you dont take”
-      </Text>
+        </Pressable>
+      </View>
     </Container>
   );
 }
@@ -54,12 +64,12 @@ export default function Login({ navigation }) {
 const Container = styled.View`
   flex: 1;
   /* add this */
-  background: ${props => props.theme.backgroundAlt};
+  background: ${(props) => props.theme.backgroundAlt};
   align-items: center;
   justify-content: center;
   display: "flex";
-  marginTop: "20%";
-`
+  margintop: "20%";
+`;
 
 const styles = StyleSheet.create({
   titleText: {
@@ -72,14 +82,28 @@ const styles = StyleSheet.create({
   button: {
     fontFamily: "Montserrat-Bold",
   },
+  loginButton: {
+    height: 40,
+    margin: 12,
+    borderWidth: 3,
+    borderColor: "#EFD796",
+    padding: 10,
+    backgroundColor: "#EFD796",
+    borderRadius: "10px",
+    fontFamily: "Montserrat-Bold",
+    alignItems: "center",
+  },
   baseText: {
     fontFamily: "Montserrat-Regular",
   },
   iconImage: {
-    flex: 1,
-    resizeMode: "cover",
-    width: "100%",
-    alignItems: "center",
+    width: "150px",
+    height: "150px",
+    marginBottom: "20px",
+    margin: 12,
+    // resizeMode: "cover",
+    // flex: 1,
+    // alignItems: "center",
   },
   bottomText: {
     display: "flex",
