@@ -9,9 +9,11 @@ import {
   Pressable,
   TextInput,
 } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 
-const Register = () => {
+const Register = ({navigation}) => {
   const theme = useTheme()
   const [firstname, handleFirstname] = useState("");
   const [lastname, handleLastname] = useState("");
@@ -59,16 +61,19 @@ const Register = () => {
         value={confirmPassword}
         placeholder="confirm password"
       />
-
+<Pressable onPress={() => navigation.navigate("Feedpage")}>
+          <Text> Feed</Text>
+        </Pressable>
       <Button onPress={handleRegister}>
           <ButtonText>register</ButtonText>
         </Button>
         <BottomText>
       <Text>Already have an account?</Text>
       <Pressable onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.button}> Login</Text>
+          <Text> Login</Text>
         </Pressable>
         </BottomText>
+
     </Container>
     
   )
