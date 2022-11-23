@@ -11,7 +11,7 @@ import {
 import { useTheme } from "../assets/themes";
 import { Switch } from "react-native";
 import styled from "styled-components/native";
-import ButtonCustom from "../components/ButtonCustom";
+import ButtonComp from "../components/ButtonComp";
 
 const icon = require("../assets/images/icon.png");
 
@@ -19,7 +19,9 @@ export default function Login({ navigation }) {
   const theme = useTheme();
   const [username, handleUsername] = useState("");
   const [password, handlePassword] = useState("");
-  const handleLogin = function () {};
+  const handleLogin = function () {
+    console.log("logged in");
+  };
   return (
     <Container>
       <Switch
@@ -42,9 +44,7 @@ export default function Login({ navigation }) {
         <TouchableOpacity onPress={handleLogin}>
           <ForgotText>Forgotten password?</ForgotText>
         </TouchableOpacity>
-        <Button onPress={handleLogin}>
-          <ButtonText>login</ButtonText>
-        </Button>
+        <ButtonComp onPress={handleLogin} />
       </View>
       <BottomText>
         <Text>Don't have an account? </Text>
@@ -53,8 +53,8 @@ export default function Login({ navigation }) {
         </Pressable>
       </BottomText>
       <Pressable onPress={() => navigation.navigate("Home")}>
-          <Text style={styles.button}>Home</Text>
-        </Pressable>
+        <Text style={styles.button}>Home</Text>
+      </Pressable>
     </Container>
   );
 }
@@ -91,23 +91,6 @@ const ForgotText = styled(BaseText)`
 const BottomText = styled(BaseText)`
   position: absolute;
   bottom: 20;
-`;
-
-const ButtonText = styled.Text`
-  font-family: Montserrat-Bold;
-  color: ${(props) => props.theme.textAlt};
-`;
-
-const Button = styled.TouchableOpacity`
-  height: 40;
-  margin-vertical: 12;
-  border-width: 3;
-  border-color: ${(props) => props.theme.border};
-  background-color: ${(props) => props.theme.border};
-  border-radius: 10;
-  font-family: Montserrat-Bold;
-  align-items: center;
-  justify-content: center;
 `;
 
 const Input = styled.TextInput`
