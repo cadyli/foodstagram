@@ -51,6 +51,9 @@ export default function Login({ navigation }) {
           <Text style={styles.button}>Register</Text>
         </Pressable>
       </BottomText>
+      <Pressable onPress={() => navigation.navigate("Home")}>
+          <Text style={styles.button}>Home</Text>
+        </Pressable>
     </Container>
   );
 }

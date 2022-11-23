@@ -2,9 +2,9 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 
 
-const Feedpage = () => {
+function Feedpage() {
   return (
-    <div><NavBar/></div>
+    <div>hello</div>
     
   )
 }

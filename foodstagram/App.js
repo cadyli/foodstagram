@@ -10,8 +10,11 @@ import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
 import OtherProfile from "./pages/OtherProfile";
 import CreatePost from "./pages/CreatePost";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
 export default function App() {
   return (
     <ThemeManager>
@@ -27,22 +30,12 @@ export default function App() {
           component={Register}
           options={{ headerShown: false }}
         ></Stack.Screen>
-         <Stack.Screen
-          name="Feedpage"
-          component={Feedpage}
+        <Stack.Screen
+          name="Home"
+          component={Home}
           options={{ headerShown: false }}
-        ></Stack.Screen>
+        />
         {/*
-        <Stack.Screen
-          name="Profile"
-          component={Profile}
-          options={{ headerShown: false }}
-        ></Stack.Screen>
-        <Stack.Screen
-          name="Settings"
-          component={Settings}
-          options={{ headerShown: false }}
-        ></Stack.Screen>
         <Stack.Screen
           name="OtherProfile"
           component={OtherProfile}
@@ -54,8 +47,19 @@ export default function App() {
           options={{ headerShown: false }}
         ></Stack.Screen> */}
       </Stack.Navigator>
-     
-    </NavigationContainer>
+    </NavigationContainer>   
     </ThemeManager>
   );
+}
+
+function Home() {
+  return (
+  <Tab.Navigator
+        initialRouteName="Feedpage"
+        >
+            <Tab.Screen name="Feedpage" component={Feedpage} />
+            <Tab.Screen name="CreatePost" component={CreatePost} />
+            <Tab.Screen name="Settings" component={Settings} />
+        </Tab.Navigator>
+  )
 }
