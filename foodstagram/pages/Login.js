@@ -11,6 +11,7 @@ import {
 import { useTheme } from "../assets/themes";
 import { Switch } from "react-native";
 import styled from "styled-components/native";
+import ButtonCustom from "../components/ButtonCustom";
 
 const icon = require("../assets/images/icon.png");
 

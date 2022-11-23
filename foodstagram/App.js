@@ -59,7 +59,7 @@ function Home() {
         >
             <Tab.Screen name="Feedpage" component={Feedpage} />
             <Tab.Screen name="CreatePost" component={CreatePost} />
-            <Tab.Screen name="Settings" component={Settings} />
+            <Tab.Screen name="Profile" component={Profile} />
         </Tab.Navigator>
   )
 }
